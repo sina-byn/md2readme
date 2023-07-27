@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 const Card = forwardRef(({ className, children }, cardRef) => {
   return (
-    <div ref={cardRef} className={clsx('card flex flex-col rounded-b-lg', className)}>
+    <div ref={cardRef} className={clsx('card rounded-b-lg', className)}>
       {children}
     </div>
   );
