@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'vs-dark': '#1e1e1e',
+        'github-dark': '#0d1117'
       },
     },
   },
