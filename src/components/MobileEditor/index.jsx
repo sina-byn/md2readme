@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import clsx from 'clsx';
 
 // * components
 import Card from '../Card';
@@ -6,7 +6,7 @@ import Card from '../Card';
 // * utils
 import { debounce } from '../../utils';
 
-const MobileEditor = forwardRef(({ value, setValue, children }, editorRef) => {
+const MobileEditor = ({ value, setValue, className, children }) => {
   const debouncedSetValue = debounce(e => {
     const { value } = e.target;
     localStorage.setItem('markdown', value);
@@ -16,8 +16,11 @@ const MobileEditor = forwardRef(({ value, setValue, children }, editorRef) => {
 
   return (
     <Card
-      ref={editorRef}
-      className='editor-container flex lg:hidden flex-col col-span-6 col-start-1 row-start-1 h-full w-full z-30 overflow-hidden'
+      className={clsx(
+        'editor-container flex lg:hidden flex-col col-span-6',
+        'col-start-1 row-start-1 h-full w-full overflow-hidden',
+        className
+      )}
     >
       {children}
       <textarea
@@ -29,6 +32,6 @@ const MobileEditor = forwardRef(({ value, setValue, children }, editorRef) => {
       />
     </Card>
   );
-});
+};
 
 export default MobileEditor;

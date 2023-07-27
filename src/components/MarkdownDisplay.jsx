@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import clsx from 'clsx';
 
 // * dompurify
 import DOMPurify from 'dompurify';
@@ -15,14 +15,17 @@ import Card from './Card';
 // * styles
 import '../styles/github-md.min.css';
 
-const MarkdownDisplay = forwardRef(({ markdown, children }, displayRef) => {
+const MarkdownDisplay = ({ markdown, className, children }) => {
   const html = converter.makeHtml(markdown);
   const sanitizedHtml = DOMPurify.sanitize(html);
 
   return (
     <Card
-      ref={displayRef}
-      className='markdown-display-wrap flex flex-col col-span-6 col-start-1 lg:col-start-7 row-start-1 overflow-y-auto'
+      className={clsx(
+        'markdown-display-wrap flex flex-col col-span-6',
+        'col-start-1 lg:col-start-7 row-start-1 overflow-y-auto',
+        className
+      )}
     >
       {children}
       <div
@@ -32,6 +35,6 @@ const MarkdownDisplay = forwardRef(({ markdown, children }, displayRef) => {
       />
     </Card>
   );
-});
+};
 
 export default MarkdownDisplay;
