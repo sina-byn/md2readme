@@ -5,6 +5,7 @@ import MonacoEditor from '@monaco-editor/react';
 
 // * components
 import Card from '../Card';
+import EditorLoader from './EditorLoader';
 
 // * utils
 import { debounce } from '../../utils';
@@ -33,6 +34,7 @@ const Editor = forwardRef(({ value, setValue, children }, editorRef) => {
         onChange={changeHandler}
         className='overflow-hidden rounded-tr-lg'
         options={{ fontSize: 16, wordWrap: true }}
+        loading={<EditorLoader />}
       />
     </Card>
   );
