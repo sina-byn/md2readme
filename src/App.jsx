@@ -2,6 +2,7 @@
 import Container from './components/Container';
 import Editor from './components/Editor';
 import MobileEditor from './components/MobileEditor';
+import MarkdownDisplay from './components/MarkdownDisplay';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Container className='grid lg:grid-cols-12 gap-x-5'>
           <Editor />
           <MobileEditor />
+          <MarkdownDisplay />
         </Container>
       </main>
     </div>
