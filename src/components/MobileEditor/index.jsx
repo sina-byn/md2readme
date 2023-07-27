@@ -28,7 +28,7 @@ const MobileEditor = ({ value, setValue, className, children }) => {
         translate='no'
         defaultValue={value}
         onChange={changeHandler}
-        className='mobile-editor h-full bg-vs-dark text-gray-200 rounded-tr-lg resize-none focus:outline-none p-4'
+        className='mobile-editor h-full bg-vs-dark text-gray-200 lg:rounded-tr-lg resize-none focus:outline-none p-4'
       />
     </Card>
   );
