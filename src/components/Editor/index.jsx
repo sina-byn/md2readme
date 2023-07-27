@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import clsx from 'clsx';
 
 // * monaco-editor
 import MonacoEditor from '@monaco-editor/react';
@@ -10,7 +10,7 @@ import EditorLoader from './EditorLoader';
 // * utils
 import { debounce } from '../../utils';
 
-const Editor = forwardRef(({ value, setValue, children }, editorRef) => {
+const Editor = ({ value, setValue }) => {
   const debouncedSetValue = debounce(value => {
     localStorage.setItem('markdown', value);
     setValue(value);
@@ -19,10 +19,19 @@ const Editor = forwardRef(({ value, setValue, children }, editorRef) => {
 
   return (
     <Card
-      ref={editorRef}
-      className='editor-container hidden lg:flex flex-col col-span-6 col-start-1 row-start-1 h-full w-full z-30 overflow-hidden'
+      className={clsx(
+        'editor-container hidden lg:flex flex-col col-span-6',
+        'col-start-1 row-start-1 h-full w-full overflow-hidden'
+      )}
     >
-      {children}
+      <h1
+        className={clsx(
+          'editor-title w-fit bg-vs-dark text-xl text-gray-200',
+          'font-light rounded-t-lg py-1 px-4'
+        )}
+      >
+        Editor
+      </h1>
       <MonacoEditor
         width='100%'
         height='100%'
@@ -36,6 +45,6 @@ const Editor = forwardRef(({ value, setValue, children }, editorRef) => {
       />
     </Card>
   );
-});
+};
 
 export default Editor;
