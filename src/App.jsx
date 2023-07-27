@@ -1,5 +1,6 @@
 // * components
 import Container from './components/Container';
+import Editor from './components/Editor';
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       </header>
       <main className='main-container w-screen h-[calc(100vh_-_65px)] p-2 md:p-5'>
         <Container className='grid lg:grid-cols-12 gap-x-5'>
-          {/* main content goes here */}
+          <Editor />
         </Container>
       </main>
     </div>
