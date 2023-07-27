@@ -6,6 +6,7 @@ import Editor from './components/Editor';
 import MobileEditor from './components/MobileEditor';
 import MarkdownDisplay from './components/MarkdownDisplay';
 import TabSwitchButton from './components/TabSwitchButton';
+import DownloadButton from './components/DownloadButton';
 
 const App = () => {
   const [markdown, setMarkdown] = useState('');
@@ -20,8 +21,9 @@ const App = () => {
   return (
     <div className='app-container'>
       <header className='app-header h-[65px] bg-zinc-800 text-gray-200 px-2 md:px-5'>
-        <Container className='flex justify-center items-center'>
+        <Container className='flex justify-between items-center'>
           <h1 className='app-title text-xl font-bold'>md2readme</h1>
+          <DownloadButton markdown={markdown} />
         </Container>
       </header>
       <main className='main-container w-screen h-[calc(100vh_-_65px)] p-2 md:p-5'>
