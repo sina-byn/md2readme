@@ -22,7 +22,7 @@ const App = () => {
     <div className='app-container'>
       <header className='app-header h-[65px] bg-zinc-800 text-gray-200 px-2 md:px-5'>
         <Container className='flex justify-between items-center'>
-          <h1 className='app-title text-xl font-bold'>md2readme</h1>
+          <img src='/md2readme.svg' alt='md2readme logo' className='w-10' />
           <DownloadButton markdown={markdown} />
         </Container>
       </header>
