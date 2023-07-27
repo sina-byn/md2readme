@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // * components
 import Container from './components/Container';
@@ -8,6 +8,12 @@ import MarkdownDisplay from './components/MarkdownDisplay';
 
 const App = () => {
   const [markdown, setMarkdown] = useState('');
+
+  useEffect(() => {
+    const savedMarkdown = localStorage.getItem('markdown');
+
+    if (savedMarkdown !== null) setMarkdown(savedMarkdown);
+  }, []);
 
   return (
     <div className='app-container'>
