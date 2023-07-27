@@ -7,7 +7,8 @@ import Card from '../Card';
 import { debounce } from '../../utils';
 
 const MobileEditor = forwardRef(({ value, setValue, children }, editorRef) => {
-  const debouncedSetValue = debounce(value => {
+  const debouncedSetValue = debounce(e => {
+    const { value } = e.target;
     localStorage.setItem('markdown', value);
     setValue(value);
   });
@@ -22,6 +23,7 @@ const MobileEditor = forwardRef(({ value, setValue, children }, editorRef) => {
       <textarea
         spellCheck
         translate='no'
+        defaultValue={value}
         onChange={changeHandler}
         className='mobile-editor h-full bg-vs-dark text-gray-200 rounded-tr-lg resize-none focus:outline-none p-4'
       />
