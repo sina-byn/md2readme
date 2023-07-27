@@ -17,8 +17,6 @@ const Editor = forwardRef(({ value, setValue, children }, editorRef) => {
   });
   const changeHandler = value => debouncedSetValue(value);
 
-  if (window.innerWidth < 1024) return null;
-
   return (
     <Card
       ref={editorRef}
