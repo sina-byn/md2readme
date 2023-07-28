@@ -9,6 +9,9 @@ import MarkdownDisplay from './components/MarkdownDisplay';
 import TabSwitchButton from './components/TabSwitchButton';
 import DownloadButton from './components/DownloadButton';
 
+// * data
+import themes from './data/themes.json';
+
 const App = () => {
   const [markdown, setMarkdown] = useState('');
   const [currentTab, setCurrentTab] = useState('editor');
@@ -45,7 +48,7 @@ const App = () => {
             </TabSwitchButton>
           </MobileEditor>
           <MarkdownDisplay markdown={markdown} className={currentTab === 'display' && 'z-30'}>
-            <header className='display-header flex justify-end lg:justify-between gap-x-2'>
+            <header className='display-header flex flex-row-reverse lg:flex-row justify-start lg:justify-between gap-x-2'>
               <TabSwitchButton
                 tab='display'
                 setCurrentTab={setCurrentTab}
@@ -56,8 +59,9 @@ const App = () => {
               <Dropdown
                 value={theme}
                 setValue={setTheme}
-                items={['light', 'dark']}
-                className='bg-github-dark'
+                items={themes}
+                className='bg-github-dark w-40'
+                formatFn={value => value.split(' ').join('_')}
               />
             </header>
           </MarkdownDisplay>
