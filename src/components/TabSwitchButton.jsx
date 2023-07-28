@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const TabSwitchButton = ({ tab, setCurrentTab, className, children }) => {
+const TabSwitchButton = ({ tab, setCurrentTab, className, children, ...props }) => {
   const tabSwitchHandler = () => setCurrentTab(tab);
 
   return (
@@ -11,6 +11,7 @@ const TabSwitchButton = ({ tab, setCurrentTab, className, children }) => {
         'tab-switch-button relative text-lg text-gray-200 font-light rounded-t-lg z-50 py-1 px-4',
         className
       )}
+      {...props}
     >
       {children}
     </button>

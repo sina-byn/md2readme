@@ -4,7 +4,7 @@ import clsx from 'clsx';
 // * hooks
 import useClickOutside from '../hooks/useClickOutside';
 
-const Dropdown = ({ value, setValue, items, className }) => {
+const Dropdown = ({ value, setValue, items, className, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, () => setIsOpen(false));
@@ -20,15 +20,15 @@ const Dropdown = ({ value, setValue, items, className }) => {
   return (
     <div
       ref={dropdownRef}
-      data-value={value}
-      className={clsx('dropdown relative rounded-lg z-[100]', className)}
+      className={clsx('dropdown relative text-gray-200 rounded-lg z-[100]', className)}
+      {...props}
     >
       <button
         type='button'
         onClick={openToggler}
         className={clsx(
           'dropdown-button flex items-center justify-between gap-x-2',
-          'w-full h-full bg-inherit text-gray-200 font-light',
+          'w-full h-full bg-inherit text-inherit font-light',
           'rounded-lg sm:rounded-b-none px-4'
         )}
       >
@@ -40,7 +40,7 @@ const Dropdown = ({ value, setValue, items, className }) => {
       <div
         className={clsx(
           'dropdown-items flex-col w-full absolute left-0 bg-inherit',
-          'border border-solid border-gray-400 rounded-lg sm:rounded-t-none overflow-hidden',
+          'border border-solid border-gray-700 rounded-lg sm:rounded-t-none overflow-hidden',
           isOpen ? 'flex' : 'hidden'
         )}
       >
@@ -51,8 +51,8 @@ const Dropdown = ({ value, setValue, items, className }) => {
             data-value={item}
             onClick={changeHandler}
             className={clsx(
-              'dropdown-item w-full bg-transparent border-b border-solid border-gray-400',
-              'last:border-0 text-gray-200 font-light whitespace-nowrap py-2 px-4'
+              'dropdown-item w-full bg-transparent border-b border-solid border-gray-700',
+              'last:border-0 text-inherit font-light whitespace-nowrap py-2 px-4'
             )}
           >
             {item}
