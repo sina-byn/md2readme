@@ -29,6 +29,7 @@ const Dropdown = ({ value, setValue, items, className, ...props }) => {
         className={clsx(
           'dropdown-button flex items-center justify-between gap-x-2',
           'w-full h-full bg-inherit text-inherit font-light',
+          'border-solid border-x border-t border-gray-700',
           'rounded-lg sm:rounded-b-none px-4'
         )}
       >

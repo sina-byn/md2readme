@@ -31,7 +31,10 @@ const MarkdownDisplay = ({ theme, markdown, className, children }) => {
       {children}
       <div
         data-theme={formatTheme(theme)}
-        className='markdown-display h-full rounded-b-lg'
+        className={clsx(
+          'markdown-display h-full rounded-b-l',
+          theme.startsWith('light') && 'border-solid border border-gray-'
+        )}
         dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
       />
     </Card>
