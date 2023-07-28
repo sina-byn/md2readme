@@ -4,7 +4,7 @@ import clsx from 'clsx';
 // * hooks
 import useClickOutside from '../hooks/useClickOutside';
 
-const Dropdown = ({ value, setValue, items, className }) => {
+const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, () => setIsOpen(false));
@@ -37,7 +37,7 @@ const Dropdown = ({ value, setValue, items, className }) => {
           <button
             key={idx}
             type='button'
-            data-value={item}
+            data-value={formatFn(item)}
             onClick={changeHandler}
             className={clsx(
               'dropdown-item bg-transparent border-b border-solid border-gray-400',
