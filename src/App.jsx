@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 // * components
 import Container from './components/Container';
+import Dropdown from './components/Dropdown';
 import Editor from './components/Editor';
 import MobileEditor from './components/MobileEditor';
 import MarkdownDisplay from './components/MarkdownDisplay';
@@ -11,6 +12,7 @@ import DownloadButton from './components/DownloadButton';
 const App = () => {
   const [markdown, setMarkdown] = useState('');
   const [currentTab, setCurrentTab] = useState('editor');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     const savedMarkdown = localStorage.getItem('markdown');
@@ -43,13 +45,21 @@ const App = () => {
             </TabSwitchButton>
           </MobileEditor>
           <MarkdownDisplay markdown={markdown} className={currentTab === 'display' && 'z-30'}>
-            <TabSwitchButton
-              tab='display'
-              setCurrentTab={setCurrentTab}
-              className='bg-github-dark self-end lg:self-start'
-            >
-              README.md
-            </TabSwitchButton>
+            <header className='display-header flex justify-end lg:justify-between gap-x-2'>
+              <TabSwitchButton
+                tab='display'
+                setCurrentTab={setCurrentTab}
+                className='bg-github-dark'
+              >
+                README.md
+              </TabSwitchButton>
+              <Dropdown
+                value={theme}
+                setValue={setTheme}
+                items={['light', 'dark']}
+                className='bg-github-dark'
+              />
+            </header>
           </MarkdownDisplay>
         </Container>
       </main>
