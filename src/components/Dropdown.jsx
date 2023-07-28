@@ -4,7 +4,7 @@ import clsx from 'clsx';
 // * hooks
 import useClickOutside from '../hooks/useClickOutside';
 
-const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) => {
+const Dropdown = ({ value, setValue, items, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, () => setIsOpen(false));
@@ -18,13 +18,17 @@ const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) 
   };
 
   return (
-    <div ref={dropdownRef} className={clsx('dropdown relative rounded-t-lg z-50', className)}>
+    <div ref={dropdownRef} className={clsx('dropdown relative rounded-lg z-[100]', className)}>
       <button
         type='button'
         onClick={openToggler}
-        className='dropdown-button flex items-center justify-between gap-x-2 w-full h-full bg-inherit text-gray-200 font-light rounded-t-lg px-4'
+        className={clsx(
+          'dropdown-button flex items-center justify-between gap-x-2',
+          'w-full h-full bg-inherit text-gray-200 font-light',
+          'rounded-lg sm:rounded-b-none px-4'
+        )}
       >
-        <span className="truncate">{value || items[0]}</span>
+        <span className='truncate'>{value || items[0]}</span>
         <i
           className={clsx('fa-solid fa-2xs mt-0.5', isOpen ? 'fa-chevron-up' : 'fa-chevron-down')}
         />
@@ -32,7 +36,7 @@ const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) 
       <div
         className={clsx(
           'dropdown-items flex-col w-full absolute left-0 bg-inherit',
-          'border border-solid border-gray-400 rounded-b-lg overflow-hidden',
+          'border border-solid border-gray-400 rounded-lg sm:rounded-t-none overflow-hidden',
           isOpen ? 'flex' : 'hidden'
         )}
       >
@@ -40,7 +44,7 @@ const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) 
           <button
             key={idx}
             type='button'
-            data-value={formatFn(item)}
+            data-value={item}
             onClick={changeHandler}
             className={clsx(
               'dropdown-item w-full bg-transparent border-b border-solid border-gray-400',
