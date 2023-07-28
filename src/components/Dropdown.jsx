@@ -22,14 +22,17 @@ const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) 
       <button
         type='button'
         onClick={openToggler}
-        className='dropdown-button h-full bg-inherit text-gray-200 font-light rounded-t-lg px-4'
+        className='dropdown-button flex items-center justify-between gap-x-2 w-full h-full bg-inherit text-gray-200 font-light rounded-t-lg px-4'
       >
-        {value || items[0]}
+        <span className="truncate">{value || items[0]}</span>
+        <i
+          className={clsx('fa-solid fa-2xs mt-0.5', isOpen ? 'fa-chevron-up' : 'fa-chevron-down')}
+        />
       </button>
       <div
         className={clsx(
           'dropdown-items flex-col w-full absolute left-0 bg-inherit',
-          'border border-solid border-gray-400 rounded-b-lg overflow-hidden shadow-lg',
+          'border border-solid border-gray-400 rounded-b-lg overflow-hidden',
           isOpen ? 'flex' : 'hidden'
         )}
       >
@@ -40,8 +43,8 @@ const Dropdown = ({ value, setValue, items, formatFn = val => val, className }) 
             data-value={formatFn(item)}
             onClick={changeHandler}
             className={clsx(
-              'dropdown-item bg-transparent border-b border-solid border-gray-400',
-              'last:border-0 text-gray-200 font-light py-1 px-4'
+              'dropdown-item w-full bg-transparent border-b border-solid border-gray-400',
+              'last:border-0 text-gray-200 font-light whitespace-nowrap py-2 px-4'
             )}
           >
             {item}
