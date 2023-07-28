@@ -32,7 +32,13 @@ const App = () => {
         </Container>
       </header>
       <main className='main-container w-screen h-[calc(100vh_-_65px)] p-2 md:p-5'>
-        <Container className='grid lg:grid-cols-12 gap-x-5'>
+        <Container className='grid grid-rows-[auto,_1fr] sm:grid-rows-1 grid-cols-1 lg:grid-cols-12 gap-y-1.5 gap-x-5'>
+          <Dropdown
+            value={theme}
+            setValue={setTheme}
+            items={themes}
+            className='mobile-dropdown theme-dropdown bg-github-dark block sm:hidden w-40 h-10 rounded-b-lg justify-self-end'
+          />
           <Editor
             value={markdown}
             setValue={setMarkdown}
@@ -60,8 +66,7 @@ const App = () => {
                 value={theme}
                 setValue={setTheme}
                 items={themes}
-                className='bg-github-dark w-40'
-                formatFn={value => value.split(' ').join('_')}
+                className='theme-dropdown hidden sm:block bg-github-dark w-40'
               />
             </header>
           </MarkdownDisplay>
