@@ -8,7 +8,7 @@ const TabSwitchButton = ({ tab, setCurrentTab, className, children }) => {
       type='button'
       onClick={tabSwitchHandler}
       className={clsx(
-        'tab-toggle-button relative text-lg text-gray-200 font-light rounded-t-lg z-50 py-1 px-4',
+        'tab-switch-button relative text-lg text-gray-200 font-light rounded-t-lg z-50 py-1 px-4',
         className
       )}
     >
