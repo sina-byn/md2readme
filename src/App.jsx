@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import clsx from 'clsx';
 
 // * components
 import Container from './components/Container';
@@ -12,10 +13,14 @@ import DownloadButton from './components/DownloadButton';
 // * data
 import themes from './data/themes.json';
 
+// * utils
+import { getThemeColors } from './utils';
+
 const App = () => {
   const [markdown, setMarkdown] = useState('');
   const [currentTab, setCurrentTab] = useState('editor');
   const [theme, setTheme] = useState('dark');
+  const themeColors = getThemeColors(theme);
 
   useEffect(() => {
     const savedMarkdown = localStorage.getItem('markdown');
@@ -53,12 +58,19 @@ const App = () => {
               Editor
             </TabSwitchButton>
           </MobileEditor>
-          <MarkdownDisplay markdown={markdown} className={currentTab === 'display' && 'z-30'}>
+          <MarkdownDisplay
+            theme={theme}
+            markdown={markdown}
+            className={currentTab === 'display' && 'z-30'}
+          >
             <header className='display-header flex flex-row-reverse lg:flex-row justify-start lg:justify-between gap-x-2'>
               <TabSwitchButton
                 tab='display'
                 setCurrentTab={setCurrentTab}
-                className='bg-github-dark'
+                style={themeColors}
+                className={clsx(
+                  theme.startsWith('light') && 'border-solid border border-b-0 border-gray-700'
+                )}
               >
                 README.md
               </TabSwitchButton>
@@ -66,7 +78,8 @@ const App = () => {
                 value={theme}
                 setValue={setTheme}
                 items={themes}
-                className='theme-dropdown hidden sm:block bg-github-dark w-40'
+                style={themeColors}
+                className='theme-dropdown hidden sm:block w-40'
               />
             </header>
           </MarkdownDisplay>
