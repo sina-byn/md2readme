@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 
 // * components
-import Card from '../Card';
+import Card from './Card';
 
 // * utils
-import { debounce } from '../../utils';
+import { debounce } from '../utils';
 
 const MobileEditor = ({ value, setValue, className, children }) => {
   const debouncedSetValue = debounce(e => {
