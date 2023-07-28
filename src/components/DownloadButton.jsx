@@ -19,7 +19,7 @@ const DownloadButton = ({ markdown }) => {
       onClick={downloadHandler}
       className='download-button flex items-center gap-x-2 bg-gray-200 text-zinc-800 font-bold border-0 rounded-md cursor-pointer py-2 px-4'
     >
-      <img src='/download.svg' alt='download icon' className='download-icon w-4' />
+      <i className="fa-solid fa-download" />
       Download
     </button>
   );
