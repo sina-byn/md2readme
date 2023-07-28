@@ -17,8 +17,8 @@ const MobileEditor = ({ value, setValue, className, children }) => {
   return (
     <Card
       className={clsx(
-        'editor-container flex lg:hidden flex-col col-span-6',
-        'col-start-1 row-start-1 h-full w-full overflow-hidden',
+        'editor-container flex lg:hidden flex-col col-start-1',
+        'row-start-2 sm:row-start-1 h-full w-full overflow-hidden',
         className
       )}
     >
