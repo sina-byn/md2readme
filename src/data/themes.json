@@ -1,0 +1,11 @@
+[
+  "light",
+  "dark",
+  "dark dimmed",
+  "dark high contrast",
+  "dark colorblind",
+  "light colorblind",
+  "light high contrast",
+  "light tritanopia",
+  "dark tritanopia"
+]
