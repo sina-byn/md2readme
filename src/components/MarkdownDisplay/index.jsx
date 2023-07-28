@@ -10,14 +10,15 @@ const converter = new Showdown.Converter();
 converter.setFlavor('github');
 
 // * components
-import Card from './Card';
+import Card from '../Card';
 
 // * styles
-import '../styles/github-md.min.css';
+import './github-md.min.css';
 
-const MarkdownDisplay = ({ markdown, className, children }) => {
+const MarkdownDisplay = ({ theme, markdown, className, children }) => {
   const html = converter.makeHtml(markdown);
   const sanitizedHtml = DOMPurify.sanitize(html);
+  const formatTheme = theme => theme.split(' ').join('_');
 
   return (
     <Card
@@ -29,7 +30,7 @@ const MarkdownDisplay = ({ markdown, className, children }) => {
     >
       {children}
       <div
-        data-theme='dark'
+        data-theme={formatTheme(theme)}
         className='markdown-display h-full rounded-b-lg'
         dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
       />
