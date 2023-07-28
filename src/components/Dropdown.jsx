@@ -18,7 +18,11 @@ const Dropdown = ({ value, setValue, items, className }) => {
   };
 
   return (
-    <div ref={dropdownRef} className={clsx('dropdown relative rounded-lg z-[100]', className)}>
+    <div
+      ref={dropdownRef}
+      data-value={value}
+      className={clsx('dropdown relative rounded-lg z-[100]', className)}
+    >
       <button
         type='button'
         onClick={openToggler}
