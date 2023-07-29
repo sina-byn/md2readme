@@ -1,8 +1,19 @@
 {
   "name": "md2readme",
   "private": true,
+  "description": "effortlessly convert GitHub markdown to HTML and preview README.md outputs in real-time with ease.",
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sina-byn/md2readme"
+  },
+  "author": {
+    "name": "Sina Bayandorian",
+    "email": "sina.sina.bayan@protonmail.com",
+    "url": "https://portfolio-sina-byn.vercel.app/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -29,5 +40,21 @@
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "vite": "^4.3.9"
+  },
+  "keywords": [
+    "markdown",
+    "README.md",
+    "README",
+    "github-markdown",
+    "github-flavored-markdown",
+    "markdown-to-html",
+    "monaco-editor",
+    "showdownjs",
+    "dompurify",
+    "conversion-tool"
+  ],
+  "bugs": {
+    "url": "https://github.com/sina-byn/md2readme/issues",
+    "email": "sina.sina.bayan@protonmail.com"
   }
 }
