@@ -1,15 +1,3 @@
-const debounce = (callback, delay = 350) => {
-  let timeoutId;
-
-  return (...args) => {
-    clearTimeout(timeoutId);
-
-    timeoutId = setTimeout(() => {
-      callback.apply(null, args);
-    }, delay);
-  };
-};
-
 const getThemeColors = theme => {
   switch (theme) {
     case 'light':
@@ -31,4 +19,4 @@ const getThemeColors = theme => {
   }
 };
 
-export { debounce, getThemeColors };
+export { getThemeColors };

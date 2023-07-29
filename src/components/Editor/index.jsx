@@ -7,15 +7,11 @@ import MonacoEditor from '@monaco-editor/react';
 import Card from '../Card';
 import EditorLoader from './EditorLoader';
 
-// * utils
-import { debounce } from '../../utils';
-
 const Editor = ({ value, setValue }) => {
-  const debouncedSetValue = debounce(value => {
+  const changeHandler = value => {
     localStorage.setItem('markdown', value);
     setValue(value);
-  });
-  const changeHandler = value => debouncedSetValue(value);
+  };
 
   return (
     <Card

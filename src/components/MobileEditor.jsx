@@ -3,16 +3,12 @@ import clsx from 'clsx';
 // * components
 import Card from './Card';
 
-// * utils
-import { debounce } from '../utils';
-
 const MobileEditor = ({ value, setValue, className, children }) => {
-  const debouncedSetValue = debounce(e => {
+  const changeHandler = e => {
     const { value } = e.target;
     localStorage.setItem('markdown', value);
     setValue(value);
-  });
-  const changeHandler = value => debouncedSetValue(value);
+  };
 
   return (
     <Card
